@@ -61,3 +61,104 @@
 |------------------------------------|-----------------------------------------------------------------------------|----------------|---------------------|
 | Registrar Progreso del Caso        | El abogado puede actualizar y registrar el estado de cada caso.             | Abogado        | N/A                 |
 | Consultar Estado del Caso          | La asistente puede mostrar el estado actual de cada caso a los clientes.    | Asistente      | N/A                 |
+
+### Casos de Uso Expandidos
+
+#### 1. Administración de Clientes
+
+**Registrar Nuevos Clientes**
+
+| **Nombre del Caso de Uso** | Registrar Nuevos Clientes                      |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente puede ingresar la información de los clientes. |
+| **Actor Primario**         | Asistente                                      |
+| **Flujo de Eventos**       | 1. La asistente selecciona la opción de registrar nuevo cliente. <br> 2. El sistema muestra un formulario para ingresar los datos del cliente. <br> 3. La asistente completa el formulario con la información del cliente (Nombre, Apellido, CUI, Teléfono, Correo, Edad, Género, Fecha de ingreso). <br> 4. El sistema guarda la información en la base de datos. <br> 5. El sistema confirma que el cliente ha sido registrado exitosamente. |
+| **Flujo Alternativo**      | 3a. Si la asistente deja campos obligatorios vacíos, el sistema muestra un mensaje de error y solicita que se completen todos los campos. |
+
+**Actualizar Información del Cliente**
+
+| **Nombre del Caso de Uso** | Actualizar Información del Cliente             |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente puede modificar los datos del cliente. |
+| **Actor Primario**         | Asistente                                      |
+| **Flujo de Eventos**       | 1. La asistente busca el cliente a modificar. <br> 2. El sistema muestra los datos actuales del cliente. <br> 3. La asistente actualiza los datos necesarios. <br> 4. El sistema guarda los cambios. <br> 5. El sistema confirma que los datos del cliente han sido actualizados. |
+| **Flujo Alternativo**      | 1a. Si el cliente no se encuentra en el sistema, se muestra un mensaje de error. |
+
+**Buscar Clientes**
+
+| **Nombre del Caso de Uso** | Buscar Clientes                                |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente puede buscar clientes utilizando el CUI o el código de expediente. |
+| **Actor Primario**         | Asistente                                      |
+| **Flujo de Eventos**       | 1. La asistente ingresa el CUI o el código de expediente del cliente. <br> 2. El sistema busca y muestra la información del cliente. |
+| **Flujo Alternativo**      | 2a. Si no se encuentra ningún cliente con el CUI o código ingresado, el sistema muestra un mensaje de error. |
+
+**Consultar Registros de Clientes (con sus Citas)**
+
+| **Nombre del Caso de Uso** | Consultar Registros de Clientes (con sus Citas) |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente y el abogado pueden ver la información de los clientes y sus citas. |
+| **Actor Primario**         | Asistente, Abogado                             |
+| **Flujo de Eventos**       | 1. El usuario selecciona la opción para ver registros de clientes. <br> 2. El sistema muestra una lista de todos los clientes y sus citas. <br> 3. El usuario puede filtrar y ordenar la lista según diferentes criterios. |
+| **Flujo Alternativo**      | 2a. Si no hay clientes registrados, el sistema muestra un mensaje indicando que no hay datos disponibles. |
+
+#### 2. Manejo de Citas
+
+**Programar Citas**
+
+| **Nombre del Caso de Uso** | Programar Citas                                |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente puede agendar citas para los clientes. |
+| **Actor Primario**         | Asistente                                      |
+| **Flujo de Eventos**       | 1. La asistente selecciona la opción para agendar una cita. <br> 2. El sistema muestra un formulario para ingresar la información de la cita (CUI del cliente, Fecha, Hora). <br> 3. La asistente completa el formulario. <br> 4. El sistema valida que la fecha y hora están disponibles. <br> 5. El sistema guarda la cita. <br> 6. El sistema confirma que la cita ha sido agendada exitosamente. |
+| **Flujo Alternativo**      | 4a. Si la fecha y hora no están disponibles, el sistema muestra un mensaje de error y solicita una nueva fecha y hora. |
+
+**Reprogramar Citas**
+
+| **Nombre del Caso de Uso** | Reprogramar Citas                              |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente puede cambiar la fecha y hora de citas ya programadas. |
+| **Actor Primario**         | Asistente                                      |
+| **Flujo de Eventos**       | 1. La asistente busca la cita a reprogramar. <br> 2. El sistema muestra los detalles de la cita actual. <br> 3. La asistente actualiza la fecha y hora de la cita. <br> 4. El sistema valida la nueva fecha y hora. <br> 5. El sistema guarda los cambios. <br> 6. El sistema confirma que la cita ha sido reprogramada. |
+| **Flujo Alternativo**      | 1a. Si no se encuentra la cita, el sistema muestra un mensaje de error. <br> 4a. Si la nueva fecha y hora no están disponibles, el sistema muestra un mensaje de error y solicita una nueva fecha y hora. |
+
+#### 3. Gestión de Expedientes
+
+**Subir Expedientes**
+
+| **Nombre del Caso de Uso** | Subir Expedientes                             |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | El abogado puede cargar documentos en formato PDF o Word como expedientes. |
+| **Actor Primario**         | Abogado                                        |
+| **Flujo de Eventos**       | 1. El abogado selecciona la opción para subir un expediente. <br> 2. El sistema muestra un formulario para cargar el documento. <br> 3. El abogado selecciona el archivo a subir (PDF o Word). <br> 4. El sistema valida el formato del archivo. <br> 5. El sistema guarda el expediente y genera un código de expediente. <br> 6. El sistema confirma que el expediente ha sido subido exitosamente y proporciona el código al abogado. |
+| **Flujo Alternativo**      | 4a. Si el formato del archivo no es válido, el sistema muestra un mensaje de error y solicita un archivo en el formato correcto. |
+
+**Visualizar Expedientes**
+
+| **Nombre del Caso de Uso** | Visualizar Expedientes                        |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | El abogado puede ver documentos PDF directamente en la plataforma y descargar documentos Word. |
+| **Actor Primario**         | Abogado                                        |
+| **Flujo de Eventos**       | 1. El abogado selecciona la opción para ver expedientes. <br> 2. El sistema muestra una lista de todos los expedientes. <br> 3. El abogado selecciona un expediente. <br> 4. El sistema muestra el contenido del archivo PDF o permite la descarga del archivo Word. |
+| **Flujo Alternativo**      | 2a. Si no hay expedientes registrados, el sistema muestra un mensaje indicando que no hay datos disponibles. |
+
+#### 4. Estado de los Casos
+
+**Registrar Progreso del Caso**
+
+| **Nombre del Caso de Uso** | Registrar Progreso del Caso                   |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | El abogado puede actualizar y registrar el estado de cada caso. |
+| **Actor Primario**         | Abogado                                        |
+| **Flujo de Eventos**       | 1. El abogado selecciona un caso. <br> 2. El sistema muestra los detalles actuales del caso. <br> 3. El abogado actualiza el estado del caso. <br> 4. El sistema guarda los cambios. <br> 5. El sistema confirma que el estado del caso ha sido actualizado. |
+| **Flujo Alternativo**      | 1a. Si el caso no se encuentra en el sistema, se muestra un mensaje de error. |
+
+**Consultar Estado del Caso**
+
+| **Nombre del Caso de Uso** | Consultar Estado del Caso                     |
+|----------------------------|------------------------------------------------|
+| **Descripción**            | La asistente puede mostrar el estado actual de cada caso a los clientes. |
+| **Actor Primario**         | Asistente                                      |
+| **Flujo de Eventos**       | 1. La asistente busca el caso por el código de expediente. <br> 2. El sistema muestra el estado actual del caso. |
+| **Flujo Alternativo**      | 1a. Si el caso no se encuentra en el sistema, se muestra un mensaje de error. |
+
