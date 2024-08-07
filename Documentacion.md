@@ -28,3 +28,36 @@
 | RNF - 009 | Alta Disponibilidad      | Asegurar un alto tiempo de funcionamiento del sistema (por ejemplo, 99.9%) para minimizar interrupciones y asegurar la disponibilidad durante las horas de operación del bufete. | Disponibilidad                 |
 | RNF - 010 | Soporte para Navegadores Web | El sistema debe funcionar correctamente en los navegadores web más comunes.                                                                  | Compatibilidad                 |
 | RNF - 011 | Accesibilidad en Diversos Dispositivos | El sistema debe ser accesible desde diferentes dispositivos, incluyendo computadoras y tabletas.                                              | Compatibilidad                 |
+
+
+### Casos de Uso de Alto Nivel
+
+#### 1. Administración de Clientes
+
+| Nombre del Caso de Uso             | Descripción                                                                 | Actor Primario | Actores Secundarios |
+|------------------------------------|-----------------------------------------------------------------------------|----------------|---------------------|
+| Registrar Nuevos Clientes          | La asistente puede ingresar la información de los clientes.                 | Asistente      | N/A                 |
+| Actualizar Información del Cliente | La asistente puede modificar los datos del cliente.                         | Asistente      | N/A                 |
+| Buscar Clientes                    | La asistente puede buscar clientes utilizando el CUI o el código de expediente. | Asistente      | N/A                 |
+| Consultar Registros de Clientes    | La asistente y el abogado pueden ver la información de los clientes y sus citas. | Asistente, Abogado | N/A             |
+
+#### 2. Manejo de Citas
+
+| Nombre del Caso de Uso             | Descripción                                                                 | Actor Primario | Actores Secundarios |
+|------------------------------------|-----------------------------------------------------------------------------|----------------|---------------------|
+| Programar Citas                    | La asistente puede agendar citas para los clientes.                         | Asistente      | N/A                 |
+| Reprogramar Citas                  | La asistente puede cambiar la fecha y hora de citas ya programadas.         | Asistente      | N/A                 |
+
+#### 3. Gestión de Expedientes
+
+| Nombre del Caso de Uso             | Descripción                                                                 | Actor Primario | Actores Secundarios |
+|------------------------------------|-----------------------------------------------------------------------------|----------------|---------------------|
+| Subir Expedientes                  | El abogado puede cargar documentos en formato PDF o Word como expedientes.  | Abogado        | N/A                 |
+| Visualizar Expedientes             | El abogado puede ver documentos PDF directamente en la plataforma y descargar documentos Word. | Abogado | N/A |
+
+#### 4. Estado de los Casos
+
+| Nombre del Caso de Uso             | Descripción                                                                 | Actor Primario | Actores Secundarios |
+|------------------------------------|-----------------------------------------------------------------------------|----------------|---------------------|
+| Registrar Progreso del Caso        | El abogado puede actualizar y registrar el estado de cada caso.             | Abogado        | N/A                 |
+| Consultar Estado del Caso          | La asistente puede mostrar el estado actual de cada caso a los clientes.    | Asistente      | N/A                 |
