@@ -23,7 +23,7 @@ const ConsultarClientes = () => {
       <h2 className="text-center my-4">Clientes y Citas</h2>
       <Table striped bordered hover>
         <thead>
-          <tr>
+          <tr>      
             <th>CUI</th>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -38,10 +38,16 @@ const ConsultarClientes = () => {
               <td>{cliente.apellido}</td>
               <td>
                 <ul>
-                  {cliente.citas && cliente.citas.length > 0 ? (
-                    cliente.citas.map(cita => (
-                      <li key={cita.fecha + cita.hora}>{cita.fecha} {cita.hora}</li>
-                    ))
+                {cliente.citas && cliente.citas.length > 0 ? (
+                    cliente.citas.map(cita => {
+                      // Formatear la fecha en un formato corto
+                      const formattedDate = new Date(cita.fecha).toLocaleDateString('es-ES');
+                      return (
+                        <li key={cita.id + cita.fecha + cita.hora}>
+                          {'[ID: ' + cita.id+']'} {'[FECHA: ' + formattedDate+']'} {'[HORA: ' + cita.hora+']'}
+                        </li>
+                      );
+                    })
                   ) : (
                     <li>No hay citas</li>
                   )}

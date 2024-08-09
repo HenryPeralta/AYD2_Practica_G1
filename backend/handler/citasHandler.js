@@ -55,7 +55,7 @@ exports.getClientesConCitas = async (req, res) => {
   try {
     const connection = await getConnection();
     const query = `
-      SELECT clientes.cui, clientes.nombre, clientes.apellido, citas.fecha, citas.hora 
+      SELECT clientes.cui, clientes.nombre, clientes.apellido, citas.id, citas.fecha, citas.hora 
       FROM clientes 
       LEFT JOIN citas ON clientes.cui = citas.cui
     `;
@@ -65,14 +65,14 @@ exports.getClientesConCitas = async (req, res) => {
       const cliente = acc.find(c => c.cui === row.cui);
       if (cliente) {
         if (row.fecha) {
-          cliente.citas.push({ fecha: row.fecha, hora: row.hora });
+          cliente.citas.push({ fecha: row.fecha, hora: row.hora, id: row.id });
         }
       } else {
         acc.push({
           cui: row.cui,
           nombre: row.nombre,
           apellido: row.apellido,
-          citas: row.fecha ? [{ fecha: row.fecha, hora: row.hora }] : []
+          citas: row.fecha ? [{ fecha: row.fecha, hora: row.hora, id: row.id }] : []
         });
       }
       return acc;

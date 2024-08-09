@@ -11,9 +11,9 @@ const ReprogramarCita = () => {
     e.preventDefault();
     try {
       await axios.post('/api/citas/reprogramar', {id, fecha, hora });
-    
-      console.log({id, fecha, hora })
       alert('Cita reprogramada exitosamente');
+      console.log({id, fecha, hora })
+    
     } catch (error) {
       console.log('Error:',{id, fecha, hora })
       alert('Error al reprogramar la cita');
