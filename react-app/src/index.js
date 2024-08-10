@@ -1,18 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { RouterProvider, createBrowserRouter, Route, createRoutesFromElements } from 'react-router-dom';
+import Objetos from './components/Objetos';
+import Abogado from './components/Abogado';
+import App from './App';
 
 
 axios.defaults.baseURL = 'http://localhost:5000'; // Cambia esta URL si es necesario
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Abogado />}>
+      {/* <Route path="dashboard" element={<Dashboard />} /> */}
+      {/* ... etc. */}
+      <Route path="objetos" element={<Objetos />} />
+    </Route>
+  )
+);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <RouterProvider router={router} /> */}
+    {/* The various pages will be displayed by the `Main` component. */}
     <App />
   </React.StrictMode>
 );

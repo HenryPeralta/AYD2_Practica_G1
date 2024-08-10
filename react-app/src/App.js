@@ -5,6 +5,8 @@ import ReprogramarCita from './components/ReprogramarCita';
 import ConsultarClientes from './components/ConsultarClientes';
 import AgregarCliente from './components/AgregarClientes';
 import BuscarCliente from './components/BuscarCliente';
+import Objetos from './components/Objetos';
+import ConsultarExpedientes from './components/ConsultarExpedientes';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
             <Nav.Link href="#agendar">Agendar Cita</Nav.Link>
             <Nav.Link href="#reprogramar">Reprogramar Cita</Nav.Link>
             <Nav.Link href="#consultar">Consultar Clientes</Nav.Link>
+            <Nav.Link href="#documentos">Documentos</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -37,6 +40,12 @@ function App() {
         </div>
         <div id="consultar" className="mt-5">
           <ConsultarClientes />
+        </div>
+        <div id="subirExpediente" className="mt-5">
+          <Objetos />
+        </div>
+        <div id="consultarExpedientes" className="mt-5">
+          <ConsultarExpedientes />
         </div>
       </Container>
     </>
