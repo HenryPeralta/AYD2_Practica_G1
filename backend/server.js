@@ -7,7 +7,6 @@ const cors = require('cors'); // Importa el paquete cors
 const citasRouter = require('./routes/citasRouter');
 const expedientesRouter = require('./routes/expedientesRouter');
 const clientesRouter = require('./routes/clientesRouter');
-const expedientesRouter = require('./routes/expedientesRouter');
 const { getConnection } = require('./confing/db');
 
 const app = express();

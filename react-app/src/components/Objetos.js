@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const FormObjeto = () => {
   const [file, setFile] = useState(null);
@@ -12,7 +13,11 @@ const FormObjeto = () => {
     if (!selectedFile) return;
 
     // Check file type
-    const validTypes = ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
+    const validTypes = [
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/pdf',
+    ];
     if (!validTypes.includes(selectedFile.type)) {
       setMessage('Invalid file type. Please upload a DOC, DOCX, or PDF file.');
       return;
@@ -62,25 +67,46 @@ const FormObjeto = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Upload a Word or PDF File</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="fileInput">Select a file:</label>
-          <input type="file" className="form-control" id="fileInput" onChange={handleFileChange} accept=".pdf,.doc,.docx" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="cuiInput">CUI:</label>
-          <input type="text" className="form-control" id="cuiInput" placeholder="Enter CUI" value={cui} onChange={(e) => setCui(e.target.value)} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="codigoInput">Código:</label>
-          <input type="text" className="form-control" id="codigoInput" placeholder="Enter Código" value={codigo} onChange={(e) => setCodigo(e.target.value)} />
-        </div>
-        <button type="submit" className="btn btn-primary">Upload</button>
-      </form>
-      {message && <div className="alert alert-info mt-3">{message}</div>}
-    </div>
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col md="6">
+          <h2 className="text-center">Upload a Word or PDF File</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formFile">
+              <Form.Label>Select a file</Form.Label>
+              <Form.Control type="file" onChange={handleFileChange} accept=".pdf,.doc,.docx" required />
+            </Form.Group>
+
+            <Form.Group controlId="formCUI">
+              <Form.Label>CUI</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter CUI"
+                value={cui}
+                onChange={(e) => setCui(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formCodigo">
+              <Form.Label>Código</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Código"
+                value={codigo}
+                onChange={(e) => setCodigo(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit" className="w-100 mt-3">
+              Upload
+            </Button>
+          </Form>
+          {message && <div className="alert alert-info mt-3">{message}</div>}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
