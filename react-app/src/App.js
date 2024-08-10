@@ -6,6 +6,7 @@ import ConsultarClientes from './components/ConsultarClientes';
 import AgregarCliente from './components/AgregarClientes';
 import BuscarCliente from './components/BuscarCliente';
 import Objetos from './components/Objetos';
+import ConsultarExpedientes from './components/ConsultarExpedientes';
 
 function App() {
   return (
@@ -40,8 +41,11 @@ function App() {
         <div id="consultar" className="mt-5">
           <ConsultarClientes />
         </div>
-        <div id="documentos" className="mt-5">
+        <div id="subirExpediente" className="mt-5">
           <Objetos />
+        </div>
+        <div id="consultarExpedientes" className="mt-5">
+          <ConsultarExpedientes />
         </div>
       </Container>
     </>

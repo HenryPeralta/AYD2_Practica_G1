@@ -50,8 +50,6 @@ exports.uploadExpediente = async (req, res) => {
     } else if (mimeType === 'application/pdf') {
       tipoArchivo = 'PDF';
     }
-
-    const s3FileName = `expedientes/${Date.now()}-${fileName}`;
     
     await s3.send(new PutObjectCommand({
       Bucket: 'ayd2objects',
@@ -60,7 +58,7 @@ exports.uploadExpediente = async (req, res) => {
       ContentType: mimeType,
     }));
 
-    const s3Url = `https://ayd2objects.s3.amazonaws.com/${s3FileName.replace(/\s/g, '%20')}`;
+    const s3Url = `https://ayd2objects.s3.amazonaws.com/${fileName.replace(/\s/g, '%20')}`;
     
     const connection = await getConnection();
     const query = `INSERT INTO expedientes (cui, codigo, archivo, tipo_archivo, fecha_ingreso) VALUES (?, ?, ?, ?, CURDATE())`;
@@ -73,3 +71,15 @@ exports.uploadExpediente = async (req, res) => {
   }
 };
 
+
+exports.getExpedientes = async (req, res) => {
+  try {
+    const connection = await getConnection();
+    const query = 'SELECT * FROM ayd2_practica.expedientes';
+    const results = await connection.query(query);
+    res.status(200).json(results[0]);
+  } catch (error) {
+    console.error('Error al obtener expedientes:', error);
+    res.status(500).json({ message: 'error al obtener expedientes' });
+  }
+};
