@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); // Importa el paquete cors
 const citasRouter = require('./routes/citasRouter');
 const expedientesRouter = require('./routes/expedientesRouter');
+const clientesRouter = require('./routes/clientesRouter');
 const { getConnection } = require('./confing/db');
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 // Rutas
 app.use('/api/citas', citasRouter);
 app.use('/api/expedientes', expedientesRouter);
+app.use('/api/clientes', clientesRouter);
 
 // Inicialización de la base de datos
 getConnection()
